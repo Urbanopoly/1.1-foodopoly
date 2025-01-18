@@ -1,0 +1,229 @@
+/* FONTS */
+
+@font-face {
+  font-family: "Londrina";
+  src: url("../fonts/Londrina/LondrinaSolid-Regular.woff2") format("woff2");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Gilory";
+  src: url("../fonts/Gilory/Gilroy-Bold.woff2") format("woff2");
+  font-weight: bold;
+}
+
+/* CUSTOM PROPERTIES */
+
+:root {
+  /* colors */
+  --clr-dark: hsl(0, 0%, 0%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-primary: hsl(0, 100%, 50%);
+  --clr-secondary: hsl(62, 100%, 50%);
+  /* font-family */
+  --ff-londrina: "Londrina", serif;
+  --ff-gilory: "Gilory", serif;
+  /* font-sizes */
+  --fs-900: 3.5rem;
+  --fs-800: 3rem;
+  --fs-700: 2.5rem;
+  --fs-600: 2rem;
+  --fs-500: 1.5rem;
+  --fs-400: 1rem;
+  --fs-300: .9rem;
+  --fs-200: .75rem;
+}
+
+/* RESET */
+
+/* Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/* margins */
+body, h1, h2, h3, h4, h5, h6, p, figure, picture {
+  margin-block-end: 0;
+}
+/* line-height */
+h1, h2, h3, h4, input, label, button {
+  line-height: 1.1;
+}
+/* body */
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+}
+/* images */
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+/* forms */
+input, button, textarea, select {
+  font: inherit;
+}
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* GENERAL UTILITIES */
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+.col {
+  flex: 1;
+}
+.container {
+  padding-inline: 1em;
+  padding-block: 3rem;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 720px;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.center {
+  text-align: center;
+}
+.justify {
+  text-align: justify;
+}
+
+/* Screen Readers Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+/* CUSTOM UTILITIES */
+
+/* background colors */
+.bg-dark { background-color: var(--clr-dark); }
+.bg-white { background-color: var(--clr-white); }
+.bg-primary { background-color: var(--clr-primary); }
+.bg-secondary { background-color: var(--clr-secondary); }
+
+/* text colors */
+.txt-dark { color: var(--clr-dark); }
+.txt-white { color: var(--clr-white); }
+.txt-primary { color: var(--clr-primary); }
+.txt-secondary { color: var(--clr-secondary); }
+
+/* font sizes */
+.fs-800 { font-size: var(--fs-800); }
+.fs-700 { font-size: var(--fs-700); }
+.fs-600 { font-size: var(--fs-600); }
+.fs-500 { font-size: var(--fs-500); }
+.fs-400 { font-size: var(--fs-400); }
+.fs-300 { font-size: var(--fs-300); }
+.fs-200 { font-size: var(--fs-200); }
+
+/* overlay */
+#overlay {
+  position: fixed; 
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.65); 
+  z-index: -1; 
+}
+
+/* HOME PAGE */
+html {
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--ff-gilory);
+  color: var(--clr-white);
+  background-color: var(--clr-dark);
+  background-image: url('../images/foodopoly.jpg');
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ff-londrina);
+  border-bottom: 1px solid var(--clr-white);
+}
+.nav-toggle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  background-color: var(--clr-primary);
+  color: var(--clr-dark);
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 2px 4px;
+  text-align: center;
+}
+.primary-navigation {
+  margin: 0;
+  padding: 5rem 0 0 0;
+  list-style: none;
+  flex-flow: column nowrap;
+  --gap: 1rem;
+  position: fixed;
+  inset: 0;
+  padding-inline: 1rem;
+  background-color: rgb(0, 0, 0, 0.75);
+  transform: translateX(-100%);
+  transition: transform 1s ease-in-out;
+  width: 300px;
+}
+.primary-navigation[data-visible=true] {
+  transform: translateX(0);
+}
+.primary-navigation li.active {
+  text-decoration: underline;
+}
+.primary-navigation a {
+  text-decoration: none;
+  color: #fff;
+}
+.site-logo {
+  width: 250px;
+  margin-inline: auto;
+}
+.site-description {
+  margin-inline: auto;
+  text-align: center;
+}
+.site-description h2 {
+  font-family: var(--ff-gilory);
+  margin-inline: auto;
+  padding-inline: 10px;
+  width: fit-content;
+  border: 0;
+}
+.site-footer {
+  margin-top: 3rem;
+  padding-block: 2rem;
+}
